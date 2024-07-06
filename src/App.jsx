@@ -1,15 +1,47 @@
 
 import './App.css';
-import {useState} from "react";
+import {useReducer} from "react";
+
+const initialData = 
+ {name: "Mohamed",
+  age: 42,
+  count: 0,
+  theme: "light"
+ }
+ 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "CHANGE_NAME":
+      return { ...state, name: action.newValue };
+
+    case "CHANGE_AGE":
+      return { ...state, age: action.newValue};
+
+      case "CHANGE_COUNT":
+      return { ...state, count: action.newValue};
+
+      case "CHANGE_THEME":
+        return { ...state, theme: action.newValue};
 
 
+
+    default:
+      return state;
+  }
+};
+
+// function MyComponent() {
+//   const [allData, dispatch] = useReducer(reducer, "Mohamed Khalifa");
+// }
+  // ...
 function App() {
-const [ name, setName] = useState("Mohamed");
-const [ age , setAge]  = useState(35);
 
-const [count, setCount] = useState(0);
-const [subtraction, setSubtraction] = useState(count);
-const [theme, setTheme] = useState("")
+// const [ name, setName] = useState("Mohamed");
+// const [ age , setAge]  = useState(35);
+
+// const [count, setCount] = useState(0);
+// const [subtraction, setSubtraction] = useState(count);
+// const [theme, setTheme] = useState("")
 
 // const changeAge = () => {
 //   setAge(33)
@@ -18,22 +50,24 @@ const [theme, setTheme] = useState("")
 //   setAge(28)
 // }
 
-const addCount = () => { 
-  setCount(count + 1) ;
- }
+// const addCount = () => { 
+//   setCount(count + 1) ;
+//  }
 
- const changeSubtraction = () => {
-  addCount
-  setSubtraction( count - 1)
- }
+//  const changeSubtraction = () => {
+//   addCount
+//   setSubtraction( count - 1)
+//  }
+
+const [allData, dispatch] = useReducer(reducer, initialData);
 
   return (
-    <div className={`App ${theme}`}>
+    <div className={`App ${allData.theme} `}>
       <div>
-        <button onClick={() => {setTheme( theme == "" ? "dark" : "")}} style={{marginTop: "40px", }}>Toggle theme</button>
+        <button  style={{marginTop: "40px", }}>Toggle theme</button>
 
 {/* Toggle switch */}
-        <div className="toggle">
+        <div  onClick={()=> {  dispatch({ type: "CHANGE_THEME", newValue: ()=> {allData.theme== "light" ? "dark" : "light"} });}} className="toggle">
           <p style={{fontSize:"20px", margin: "20px 0"}}>Switch theme</p>
           <svg display="none">
             <symbol
@@ -168,27 +202,28 @@ const addCount = () => {
       </div>
 
       <div className="card">
-        <button  onClick ={() =>{setTheme("")}} style={{marginRight: "26px" }}>Light</button>
-        <button  onClick ={() =>{setTheme("dark")}} style={{marginRight: "26px"}}>Dark</button>
-        <button  onClick ={() =>{setTheme("grey")}} style={{marginRight: "26px"}}>Grey</button>
-        <button  onClick ={() =>{setTheme("pink")}}>Pink</button>
+        <button onClick={()=> {  dispatch({ type: "CHANGE_THEME", newValue: "light" });}} style={{marginRight: "26px" }}>Light</button>
+        <button onClick={()=> {  dispatch({ type: "CHANGE_THEME", newValue: "dark" });}} style={{marginRight: "26px"}}>Dark</button>
+        <button onClick={()=> {  dispatch({ type: "CHANGE_THEME", newValue: "grey" });}} style={{marginRight: "26px"}}>Grey</button>
+        <button onClick={()=> {  dispatch({ type: "CHANGE_THEME", newValue: "pink" });}} >Pink</button>
       </div>
         <div>
-        <h2>My name is {name} </h2>
-        <button onClick={ ()=>{ setName("Mohamed Khalifa")} } >Change name</button>
-        <button onClick={ ()=>{ setName("Mohamed")} } >Reset name</button>
+        <h2>My name is {allData.name} </h2>
+        <button onClick={()=> {  dispatch({ type: "CHANGE_NAME", newValue: "Mohamed Khalifa" });}} >Change name</button>
+        <button  onClick={()=> {  dispatch({ type: "CHANGE_NAME", newValue: "Mohamed" });}} >Reset name</button>
         </div>
       <div>
-        <h2> My age is {age}</h2>
-        <button onClick={ ()=> {setAge(43) }}>Change age</button>
-        <button onClick={()=> { setAge(35) }}>Rsset age</button>
+        <h2> My age is {allData.age}</h2>
+        <button  onClick={()=> {  dispatch({ type: "CHANGE_AGE", newValue: 33 });}}>Change age</button>
+        <button  onClick={()=> {  dispatch({ type: "CHANGE_AGE", newValue: 42 });}}>Rsset age</button>
       </div>
 
       <div>
         <br/>
-        <button onClick={addCount}> Count {count} </button>
+        <h2>  {allData.count} </h2>
+        <button onClick={()=> {  dispatch({ type: "CHANGE_COUNT", newValue: allData.count +1 });}}> Count </button>
         <br/>
-        <button onClick={changeSubtraction}> Subtraction {subtraction} </button>
+        <button onClick={()=> {  dispatch({ type: "CHANGE_COUNT", newValue: allData.count-1 });}}> Subtraction  </button>
     
       </div>
 
