@@ -221,7 +221,7 @@ const [allData, dispatch] = useReducer(reducer, initialData);
       <div>
         <br/>
         <h2>  {allData.count} </h2>
-        <button onClick={()=> {  dispatch({ type: "CHANGE_COUNT", newValue: allData.count +1 });}}> Count </button>
+        <button onClick={()=> {  dispatch({ type: "CHANGE_COUNT", newValue: allData.count +1 });}}> Add </button>
         <br/>
         <button onClick={()=> {  dispatch({ type: "CHANGE_COUNT", newValue: allData.count-1 });}}> Subtraction  </button>
     
