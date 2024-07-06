@@ -64,7 +64,7 @@ const [allData, dispatch] = useReducer(reducer, initialData);
   return (
     <div className={`App ${allData.theme} `}>
       <div>
-        <button  style={{marginTop: "40px", }}>Toggle theme</button>
+        <button  onClick={()=> {  dispatch({ type: "CHANGE_THEME", newValue: ()=> {allData.theme== "light" ? "dark" : "light"} });}}  style={{marginTop: "40px", }}>Toggle theme</button>
 
 {/* Toggle switch */}
         <div  onClick={()=> {  dispatch({ type: "CHANGE_THEME", newValue: ()=> {allData.theme== "light" ? "dark" : "light"} });}} className="toggle">
