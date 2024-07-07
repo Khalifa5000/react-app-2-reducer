@@ -30,34 +30,8 @@ const reducer = (state, action) => {
   }
 };
 
-// function MyComponent() {
-//   const [allData, dispatch] = useReducer(reducer, "Mohamed Khalifa");
-// }
-  // ...
 function App() {
 
-// const [ name, setName] = useState("Mohamed");
-// const [ age , setAge]  = useState(35);
-
-// const [count, setCount] = useState(0);
-// const [subtraction, setSubtraction] = useState(count);
-// const [theme, setTheme] = useState("")
-
-// const changeAge = () => {
-//   setAge(33)
-// }
-// const resetAge = () => {
-//   setAge(28)
-// }
-
-// const addCount = () => { 
-//   setCount(count + 1) ;
-//  }
-
-//  const changeSubtraction = () => {
-//   addCount
-//   setSubtraction( count - 1)
-//  }
 
 const [allData, dispatch] = useReducer(reducer, initialData);
 
