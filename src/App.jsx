@@ -37,8 +37,10 @@ const [allData, dispatch] = useReducer(reducer, initialData);
 
   return (
     <div className={`App ${allData.theme} `}>
+      
       <div>
-        <button  onClick={()=> {  dispatch({ type: "CHANGE_THEME", newValue: ()=> {allData.theme== "light" ? "dark" : "light"} });}}  style={{marginTop: "40px", }}>Toggle theme</button>
+        <button  onClick={()=> {  dispatch({ type: "CHANGE_THEME", newValue:  allData.theme == "light" ? "dark" : "light" });}}  style={{marginTop: "40px", }}>Toggle theme</button>
+      </div>
 
 {/* Toggle switch */}
         <div  onClick={()=> {  dispatch({ type: "CHANGE_THEME", newValue: ()=> {allData.theme== "light" ? "dark" : "light"} });}} className="toggle">
@@ -172,8 +174,6 @@ const [allData, dispatch] = useReducer(reducer, initialData);
           </label>
         </div>
 {/* Toggle switch end */}
-
-      </div>
 
       <div className="card">
         <button onClick={()=> {  dispatch({ type: "CHANGE_THEME", newValue: "light" });}} style={{marginRight: "26px" }}>Light</button>
