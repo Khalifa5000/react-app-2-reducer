@@ -181,10 +181,9 @@ body:has(.switch__input:checked) {
 	border-radius: 0.75em;
 	box-shadow:		0 0 0 0.0625em hsla(var(--hue),90%,50%,0),		0 0.125em 0.5em hsla(var(--hue),10%,10%,0.1);
 	outline: transparent;
-
+  border: 2px solid #000;
 	width: 2.75em;
 	height: 1.5em;
-
 	-webkit-appearance: none;
 	appearance: none;
 	transition:		background-color var(--trans-dur),		box-shadow var(--trans-dur);
