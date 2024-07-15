@@ -43,7 +43,7 @@ const [allData, dispatch] = useReducer(reducer, initialData);
       </div>
 
 {/* Toggle switch */}
-        <h3>Switch Theme</h3>
+        
         <div  onClick={()=> {  dispatch({ type: "CHANGE_THEME", newValue: ()=> {allData.theme== "light" ? "dark" : "light"} });}} className="toggle">
           <p style={{fontSize:"20px", margin: "20px 0"}}>Switch theme</p>
           <svg display="none">
